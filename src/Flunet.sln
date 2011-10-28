@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flunet.Runner", "Flunet.Run
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flunet.Samples", "Flunet.Samples\Flunet.Samples.csproj", "{363DE8E6-9CA9-4C44-98D7-A32C902549CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.Test.Unit", "Fluent.Test.Unit\Fluent.Test.Unit.csproj", "{5BC681A1-838E-47C3-90FC-1EDA65FA7B76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flunet.Test.Unit", "Flunet.Test.Unit\Flunet.Test.Unit.csproj", "{5BC681A1-838E-47C3-90FC-1EDA65FA7B76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

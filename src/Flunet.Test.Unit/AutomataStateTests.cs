@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Flunet.Automata;
+﻿using Flunet.Automata;
 using Flunet.Automata.Interfaces;
 using NUnit.Framework;
 
-namespace Fluent.Test.Unit
+namespace Flunet.Test.Unit
 {
     [TestFixture]
     public class AutomataStateTests

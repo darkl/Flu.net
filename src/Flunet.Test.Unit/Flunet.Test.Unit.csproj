@@ -8,8 +8,8 @@
     <ProjectGuid>{5BC681A1-838E-47C3-90FC-1EDA65FA7B76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fluent.Test.Unit</RootNamespace>
-    <AssemblyName>Fluent.Test.Unit</AssemblyName>
+    <RootNamespace>Flunet.Test.Unit</RootNamespace>
+    <AssemblyName>Flunet.Test.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
