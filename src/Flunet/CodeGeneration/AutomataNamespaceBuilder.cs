@@ -113,7 +113,7 @@ namespace Flunet.CodeGeneration
                         .SelectMany(x => x.GetParameters()
                                              .Where(y => y.ParameterType.IsGenericParameter))
                         .Select(x => x.ParameterType)
-                        .Distinct().ToList();
+                        .Distinct(new ToStringComparer<Type>()).ToList();
 
                 result[state] = typeGenericParameters;
             }
