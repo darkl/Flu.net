@@ -57,6 +57,14 @@ namespace Flunet.Test.Unit
         }
 
         [Test]
+        public void Add_AddingNullState_ThrowsException()
+        {
+            AutomataState<int> q1 = new AutomataState<int>("Q1", true);
+
+            Assert.Throws<ArgumentNullException>(() => q1.Add(1, null));
+        }
+
+        [Test]
         public void GetEnumerator_NoTransitions_NoEnumeration()
         {
             AutomataState<int> state = new AutomataState<int>("Root", true);
@@ -94,15 +102,15 @@ namespace Flunet.Test.Unit
             state.Add(2, state2);
             state.Add(3, state3);
 
-            Dictionary<int, IAutomataState<int>> exceptedEnumeration =
-                new Dictionary<int, IAutomataState<int>>()
+            HashSet<KeyValuePair<int, IAutomataState<int>>> exceptedEnumeration =
+                new HashSet<KeyValuePair<int, IAutomataState<int>>>()
                     {
-                        {1, state1},
-                        {2, state2},
-                        {3, state3}
+                        new KeyValuePair<int, IAutomataState<int>>(1, state1),
+                        new KeyValuePair<int, IAutomataState<int>>(2, state2),
+                        new KeyValuePair<int, IAutomataState<int>>(3, state3)
                     };
 
-            Assert.IsTrue(state.SequenceEqual(exceptedEnumeration));
+            Assert.IsTrue(exceptedEnumeration.SetEquals(state));
         }
     }
 }
