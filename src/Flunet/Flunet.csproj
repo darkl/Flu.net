@@ -81,6 +81,7 @@
     <Compile Include="Automata\Interfaces\IExtendableDeterministicAutomata.cs" />
     <Compile Include="Automata\Interfaces\IDeterministicAutomata.cs" />
     <Compile Include="Automata\DeterministicAutomata.cs" />
+    <Compile Include="Automata\ThrowHelper.cs" />
     <Compile Include="CodeGeneration\AutomataNamespaceBuilder.cs" />
     <Compile Include="CodeGeneration\StateInterfaceBuilder.cs" />
     <Compile Include="CodeGeneration\SyntaxImplementerBuilder.cs" />

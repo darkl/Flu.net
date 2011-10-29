@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Flunet.Automata.Interfaces;
 
@@ -102,6 +103,12 @@ namespace Flunet.Automata
         /// </summary>
         public void Add(T input, IAutomataState<T> state)
         {
+            if (state == null)
+            {
+                throw new ArgumentNullException("state",
+                                                "Can't map a state to null.");
+            }
+
             mInputToState.Add(input, state);
         }
 

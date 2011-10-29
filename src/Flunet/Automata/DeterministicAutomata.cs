@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Flunet.Automata.Interfaces;
 
@@ -13,7 +14,8 @@ namespace Flunet.Automata
     {
         #region Members
 
-        private readonly ICollection<IAutomataState<T>> mStates = new List<IAutomataState<T>>();
+        private readonly ICollection<IAutomataState<T>> mStates = 
+            new HashSet<IAutomataState<T>>();
 
         private readonly IEqualityComparer<T> mComparer;
         
@@ -52,6 +54,11 @@ namespace Flunet.Automata
         /// </summary>
         public void Read(T input)
         {
+            if (this.CurrentState == null)
+            {
+                ThrowHelper.ThrowNoStatesAvailable();
+            }
+
             CurrentState = CurrentState.Transit(input);
         }
 
@@ -60,6 +67,11 @@ namespace Flunet.Automata
         /// </summary>
         public void Reset()
         {
+            if (this.Root == null)
+            {
+                ThrowHelper.ThrowNoStatesAvailable();
+            }
+
             this.CurrentState = this.Root;
         }
 
@@ -70,6 +82,11 @@ namespace Flunet.Automata
         {
             get 
             {
+                if (this.CurrentState == null)
+                {
+                    ThrowHelper.ThrowNoStatesAvailable();
+                }
+
                 return CurrentState.IsValid; 
             }
         }
@@ -95,10 +112,13 @@ namespace Flunet.Automata
                 if ((mAlphabet == null) || !mAlphabet.Any())
                 {
                     // If there is no alphabet available, we guess it...
-                    return mStates.SelectMany(x => x)
-                        .Select(x => x.Key)
-                        .Distinct(Comparer)
-                        .ToList();
+                    IEnumerable<T> knownSymbols =
+                        mStates
+                            .SelectMany(x => x)
+                            .Select(x => x.Key);
+
+                    mAlphabet =
+                        new HashSet<T>(knownSymbols, mComparer);
                 }
 
                 return mAlphabet;
@@ -140,6 +160,12 @@ namespace Flunet.Automata
         /// </summary>
         public void Add(IAutomataState<T> state)
         {
+            if (state == null)
+            {
+                throw new ArgumentNullException("state",
+                                                "Can't add a null state.");
+            }
+
             if (Root == null)
             {
                 Root = state;
